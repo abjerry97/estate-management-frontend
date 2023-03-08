@@ -1,0 +1,185 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration {
+  display: none;
+}
+input{
+  -webkit-appearance: none;
+  -webkit-box-sizing: content-box;
+  outline:none;
+}
+
+.purple-border {
+  border: 1.5px solid #5E38AF;
+border-radius: 7px;
+}
+.purple-text {
+  color: #5E38AF !important;
+}
+.gray-text {
+color:  #716D6D;
+}
+
+.somehow-black-text {
+  color: #716D6D;
+
+}
+.success-card-badge {
+  background: #5E38AF21;
+
+}
+.vote-badge {
+  background: #D9D9D936;
+
+}
+
+.commerce-nav-active {
+  background: #D9D9D936;
+border-radius: 20px;
+}
+::-webkit-input-placeholder { /* Edge */
+  color: #716D6D;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #716D6D;
+}
+
+::placeholder {
+  color: #716D6D;
+}
+input[type=password]::-ms-reveal,
+input[type=password]::-ms-clear
+{
+    display: none;
+}
+
+.page-btn {
+  background: #5E38AF;
+border-radius: 7px;
+color:#FDFDFD;
+}
+.page-btn-white {
+  background: #FDFDFD;
+  border-radius: 7px;
+  border: 1px solid #5E38AF;
+  color:#5E38AF;
+}
+.text-bold {
+  font-weight: 600 !important;
+}
+.fz-18 {
+  font-size: 18px !important;
+}
+a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+a:hover{
+  text-decoration: underline !important;
+}
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.search-list:hover {
+  background-color: #5E38AF;
+}
+
+.separator{
+  display:flex;
+  align-items: center;
+}
+
+.separator .line{
+  height: 1px;
+  flex: 1;
+  background-color: #A986A7;
+}
+
+.separator p{
+  padding: 0 2rem;
+}
+
+.emanager-card {
+  background-color: #F2F2F2;
+}
+
+.emanager-card .emanager-card-body p {
+  color: #716D6D !important; 
+
+}
+
+.home-btn {
+  background-color: #A986A8;
+border-radius: 3.57361px;
+border: none;
+padding: 6px 30px;
+color: #ffffff;
+}
+
+.badge{
+color:  #EEC4C4 !important;
+background: #EC1616;
+border-radius: 3.77841px;
+right: 10px;
+/* transform: matrix(-1, 0, 0, 1, 0, 0); */
+}
+
+
+
+
+.guest-emanager-card-wrapper {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.commerce-card {
+  box-shadow: 8px 10px 25px 0px #0000000A;
+  /* margin: 1rem; */ 
+
+}
+
+.commerce-card-btn {
+  background: #B2CFE6;
+border-radius: 20px;
+}
+
+.modal-img {
+  height: 40vh;
+}
+
+.food-modal-btn {
+  background: #5E38AF;
+display: block;
+color: #ffffff;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.cart-btn {
+  background-color: #A986A7;
+  color: #ffffff;
+}
