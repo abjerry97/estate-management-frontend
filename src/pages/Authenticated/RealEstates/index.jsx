@@ -24,7 +24,7 @@ function RealEstates(props) {
         <div className="d-flex justify-content-between  ">
           <div
             className="d-flex align-items-center gap-2 cursor-pointer"
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/")}
           >
             <BackArrowIcon /> <span>Real Estate</span>
           </div>

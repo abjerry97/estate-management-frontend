@@ -7,18 +7,22 @@ import PhonenumberIcon from "../../../../../../assets/svg/PhonenumberIcon";
 import PlatenumberIcon from "../../../../../../assets/svg/PlatenumberIcon";
 import Taxi from "../../../../../../assets/svg/Taxi";
 import { useNavigate } from "react-router-dom";
+import NairaIcon from "../../../../../../assets/svg/NairaIcon";
+import CalenderIcon from "../../../../../../assets/svg/CalenderIcon";
+import AccountNumberIcon from "../../../../../../assets/svg/AccountNumberIcon";
 
-function CreateTaxiPassTab(props) {
+function MakeBillPayment(props) {
+  const {currentBill}= props
   const navigate = useNavigate();
 
-  const handleSubmitTaxi = (e) => {
+  const handleSubmit  = (e) => {
     e.preventDefault();
     axios
       .post(`/guest/create/taxi`, {
-        phone: taxiDriverPhoneNumber,
-        name: taxiDriverName,
-        companyName: taxiCompanyName,
-        plateNumber: taxiPlateNumber,
+        phone: noOfMonths,
+        name: amount,
+        companyName: toMonth,
+        plateNumber: fromMonth,
         numberOfGuests: 1,
       })
       .then((response) => {
@@ -45,69 +49,70 @@ function CreateTaxiPassTab(props) {
         alert(error);
       });
   };
-  const [taxiDriverName, setTaxiDriverName] = useState("");
-  const [taxiDriverPhoneNumber, setTaxiDriverPhoneNumber] = useState("");
-  const [taxiCompanyName, setTaxiCompanyName] = useState("");
-  const [taxiPlateNumber, setTaxiPlateNumber] = useState("");
+  const [amount, setAmount] = useState("");
+  const [noOfMonths, setNoOfMonths] = useState("");
+  const [toMonth, setToMonth] = useState("");
+  const [fromMonth, setFromMonth] = useState("");
 
   return (
     <form>
-      <Taxi /> Gate Pass for your Taxi
+     {currentBill.icon} {currentBill.text}
       <div className="d-flex align-items-center purple-border p-2 mt-3">
-        <PersonIcon />
+        <NairaIcon />
         <input
           type="text"
           name=""
           id=""
-          value={taxiDriverName}
-          placeholder="Driver’s Name"
+          value={amount}
+          placeholder="amount"
           className="border-0 w-100 mx-2 somehow-black-text"
           onChange={(e) => {
-            setTaxiDriverName(e.target.value);
+            setAmount(e.target.value);
           }}
         />
       </div>
       <div className="d-flex align-items-center purple-border p-2 mt-3">
-        <PhonenumberIcon />
+        <AccountNumberIcon />
 
         <input
           type="text"
           name=""
           id=""
-          value={taxiDriverPhoneNumber}
-          placeholder="phonenumber"
+          value={noOfMonths}
+          placeholder="number of months"
           className="border-0 w-100 mx-2 somehow-black-text"
           onChange={(e) => {
-            setTaxiDriverPhoneNumber(e.target.value);
+            setNoOfMonths(e.target.value);
           }}
         />
       </div>
       <div className="d-flex align-items-center purple-border p-2 mt-3">
-        <CompanyIcon />
-        <input
-          type="text"
-          name=""
-          id=""
-          value={taxiCompanyName}
-          placeholder="Company Name"
-          className="border-0 w-100 mx-2 somehow-black-text"
-          onChange={(e) => {
-            setTaxiCompanyName(e.target.value);
-          }}
-        />
-      </div>
-      <div className="d-flex align-items-center purple-border p-2 mt-3">
-        <PlatenumberIcon />
+        <CalenderIcon />
 
         <input
           type="text"
           name=""
           id=""
-          value={taxiPlateNumber}
-          placeholder="Plate Number"
+          value={fromMonth}
+          placeholder="from month"
           className="border-0 w-100 mx-2 somehow-black-text"
           onChange={(e) => {
-            setTaxiPlateNumber(e.target.value);
+            setFromMonth(e.target.value);
+          }}
+        />
+      </div>
+      
+      <div className="d-flex align-items-center purple-border p-2 mt-3">
+        <CalenderIcon />
+        <input
+          type="text"
+          name=""
+          id=""
+          value={toMonth}
+          placeholder="to month"
+          className="border-0 w-100 mx-2 somehow-black-text"
+          onChange={(e) => {
+            setToMonth(e.target.value);
           }}
         />
       </div>
@@ -115,7 +120,7 @@ function CreateTaxiPassTab(props) {
         <button
           className="page-btn border-0 w-100 p-2"
           onClick={(e) => {
-            handleSubmitTaxi(e);
+            handleSubmit(e);
           }}
         >
           Submit
@@ -130,4 +135,4 @@ function CreateTaxiPassTab(props) {
   );
 }
 
-export default CreateTaxiPassTab;
+export default MakeBillPayment;

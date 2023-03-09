@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import FoodHomeIcon from "../../../assets/svg/FoodHomeIcon";
 import GuestPlusIcon from "../../../assets/svg/GuestPlusIcon";
@@ -9,9 +9,11 @@ import ServicemenIcon from "../../../assets/svg/ServicemenIcon";
 import UpcomingBillsIcon from "../../../assets/svg/UpcomingBillsIcon";
 import VoteHandIcon from "../../../assets/svg/VoteHandIcon";
 import NavBar from "../NavBar/NavBar";
+import SideBar from "../SideBar";
 
 function Home(props) {
   const { allUpdates, setAllUpdates } = props;
+  const [sideBarActive, setsideBarActive] = useState(false);
   useEffect(() => {
     axios
       .get("/updates")
@@ -74,7 +76,9 @@ function Home(props) {
 
   return (
     <div className="container">
-      <NavBar {...props} />
+    <NavBar {...props} sideBarActive={sideBarActive}  setsideBarActive={setsideBarActive} />
+    {sideBarActive?      <SideBar {...props} sideBarActive={sideBarActive}  setsideBarActive={setsideBarActive} />: <></>}
+
       <h6 className="purple-text mt-5">Upcoming Payments</h6>
       <div className="emanager-card p-4">
         <strong className="">Upcoming Water Bills</strong>

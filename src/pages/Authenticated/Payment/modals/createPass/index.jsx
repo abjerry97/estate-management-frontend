@@ -1,16 +1,11 @@
-import { Modal, Button, Tab, Tabs } from "react-bootstrap";
-import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router";
-import CreateTaxiPassTab from "./Tabs/CreateTaxiPassTab";
-import CreateDispatchPassTab from "./Tabs/CreateDispatchPassTab";
-import CreateEventPassTab from "./Tabs/CreateEventPassTab";
-import CreateGuestPassTab from "./Tabs/CreateGuestPassTab";
+import { Modal, Tab, Tabs } from "react-bootstrap";
+import React, { useState } from "react"; 
 import PassCreationSuccess from "../PassCreationSuccess";
+import MakeBillPayment from "./Tabs/MakeBillPayment";
 
-function CreatePass(props) {
-  const navigate = useNavigate();
-  const [activeTabName, setActiveTabName] = useState("taxi");
+function PayBills(props) {
+  const { bills } = props; 
+  const [activeTabName, setActiveTabName] = useState(bills[0].name);
   const [creationSuccess, showCreationSuccess] = useState(false);
   const [passInfo, setpassInfo] = useState({});
 
@@ -20,7 +15,7 @@ function CreatePass(props) {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
-    > 
+    >
       {!creationSuccess ? (
         <Tabs
           defaultActiveKey={activeTabName}
@@ -28,32 +23,23 @@ function CreatePass(props) {
           className="mb-3 p-2"
           onSelect={(e) => setActiveTabName(e)}
         >
-          <Tab eventKey="taxi" title="Taxi" className="p-4">
-            <CreateTaxiPassTab
-              onHide={props.onHide}
-              onCreate={showCreationSuccess}
-              setpassInfo={setpassInfo}
-            />
-          </Tab>
-          <Tab eventKey="dispatch" title="Dispatch" className="p-4">
-            <CreateDispatchPassTab
-              onHide={props.onHide}
-              setpassInfo={setpassInfo}
-            />
-          </Tab>
-          <Tab eventKey="event" title="Event" className="p-3">
-            <CreateEventPassTab
-              onHide={props.onHide}
-              setpassInfo={setpassInfo}
-            />
-          </Tab>
-          <Tab eventKey="guest" title="Guest" className="p-3">
-            {" "}
-            <CreateGuestPassTab
-              onHide={props.onHide}
-              setpassInfo={setpassInfo}
-            />
-          </Tab>
+          {bills.map((currentBill, index) => {
+            return (
+              <Tab
+                eventKey={currentBill.name}
+                title={currentBill.name}
+                className="p-4"
+                key={index}
+              >
+                <MakeBillPayment
+                currentBill={currentBill}
+                  onHide={props.onHide}
+                  onCreate={showCreationSuccess}
+                  setpassInfo={setpassInfo}
+                />
+              </Tab>
+            );
+          })}
         </Tabs>
       ) : (
         <PassCreationSuccess
@@ -71,4 +57,4 @@ function CreatePass(props) {
   );
 }
 
-export default CreatePass;
+export default PayBills;

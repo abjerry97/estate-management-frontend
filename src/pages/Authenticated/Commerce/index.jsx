@@ -1,5 +1,12 @@
 import React, { useRef, useState } from "react";
-import { Link, Outlet, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import {
+  Link,
+  Outlet,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import BackArrowIcon from "../../../assets/svg/BackArrowIcon";
 import CartActiveIcon from "../../../assets/svg/CartActiveIcon";
 import FoodHomeIcon from "../../../assets/svg/FoodHomeIcon";
@@ -11,10 +18,10 @@ import Food from "./Food";
 import Goods from "./Goods";
 
 function Commerce(props) {
-  const location =  useLocation()
-  console.log(location)
-  const ref = useRef(null)
-  const cartCountref  =ref.current
+  const location = useLocation();
+  console.log(location);
+  const ref = useRef(null);
+  const cartCountref = ref.current;
   const navigate = useNavigate();
   const [activeCommerceTab, setactiveCommerceTab] = useState(0);
   const commerceNavlinks = [
@@ -51,16 +58,22 @@ function Commerce(props) {
             <BackArrowIcon /> <span>Commerce</span>
           </div>
           <div className="">
-            Cart <div className="badge pills" ref={cartCountref}> {props.cartItems.length}</div>
+            Cart{" "}
+            <div className="badge pills" ref={cartCountref}>
+              {" "}
+              {props.cartItems.length}
+            </div>
           </div>
         </div>
 
         <div className="row mt-3 clear-fix cursor-pointer pb-4">
           {commerceNavlinks.map((currentCommerceNav, index) => {
             return (
-              <Link to={currentCommerceNav.to}
+              <Link
+                to={currentCommerceNav.to}
                 className={`${
-  location.pathname    == `/commerce/${currentCommerceNav.to}`                ? "col-4 col-md-5 commerce-nav-active"
+                  location.pathname == `/commerce/${currentCommerceNav.to}`
+                    ? "col-4 col-md-5 commerce-nav-active"
                     : "col"
                 } clear-fix d-flex justify-content-center align-items-center gap-2 gap-md-5 p-2`}
                 key={index}
@@ -80,15 +93,14 @@ function Commerce(props) {
             );
           })}
         </div>
-
       </div>
-          
-          <Routes>
-          <Route path="/"  element={<Food {...props} />} />
-          <Route path="food" element={<Food {...props} />} />
-          <Route path="goods" element={<Goods {...props} />} />
-          <Route path="cart" element={<Cart {...props} />} />
-          </Routes>
+
+      <Routes>
+        <Route path="/" element={<Food {...props} />} />
+        <Route path="food" element={<Food {...props} />} />
+        <Route path="goods" element={<Goods {...props} />} />
+        <Route path="cart" element={<Cart {...props} />} />
+      </Routes>
 
       {/* {commerceNavlinks[activeCommerceTab].component} */}
     </div>

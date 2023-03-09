@@ -71,7 +71,7 @@ function Utilities(props) {
 
   return (
     <div className="container">
-      <div className="mt-3 mb-4 " onClick={() => navigate(-1)}>
+      <div className="mt-3 mb-4 " onClick={() => navigate("/wallet")}>
         <div className="">
           <div className="d-flex align-items-center gap-2 cursor-pointer">
             <BackArrowIcon /> <span>Transfer</span>

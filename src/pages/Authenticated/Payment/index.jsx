@@ -1,11 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CreateVisitor from "./CreateVisitor"; 
+import CreateVisitor from "./Bills"; 
 import axios from "axios";
 import BackArrowIcon from "../../../assets/svg/BackArrowIcon";
 import PaymentHistory from "./PaymentHistory";
+import Bills from "./Bills";
+import EstateLevyIcon from "../../../assets/svg/EstateLevyIcon";
+import WaterBillIcon from "../../../assets/svg/WaterBillIcon";
+import WasteBillIcon from "../../../assets/svg/WasteBillIcon";
+import ViewMoreIcon from "../../../assets/svg/ViewMoreIcon";
 
 function Payment(props) {
+  const bills = [
+    {
+      name: "Estate Levy",
+      text: "Pay for your estate levy",
+      icon: <EstateLevyIcon />,
+    },
+    {
+      name: "Water Bill",
+      text: "Pay for your water bills",
+      icon: <WaterBillIcon />,
+    },
+    {
+      name: "Waste Levy",
+      text: "Pay for your waste bills",
+      icon: <WasteBillIcon />,
+    },
+    {
+      name: "Project",
+      text: "Contribute to on-going estate project",
+      icon: <ViewMoreIcon />,
+    },
+  ];
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState(0);
   const { allGuests, setAllGuests } = props;
@@ -37,8 +64,8 @@ function Payment(props) {
   const tabs = [
     {
       key: 0,
-      name: "Guest",
-      component: <CreateVisitor {...props} />,
+      name: "Bills",
+      component: <Bills {...props} bills={bills} />,
     },
     {
       key: 1,
@@ -62,7 +89,7 @@ function Payment(props) {
     <div className="container">
       <div className="mt-3 mb-4 " onClick={() => navigate("/")}>
         <div className="d-flex">
-        <div className="d-flex align-items-center gap-2 cursor-pointer"><BackArrowIcon/> <span> Visitors</span></div>
+        <div className="d-flex align-items-center gap-2 cursor-pointer"><BackArrowIcon/> <span> Payment</span></div>
       </div></div>
       <div className="row" style={tabStyle}>
         {tabs.map(({ key, name }, index) => {
