@@ -10,6 +10,7 @@ export default function CreateVisitor(props) {
   const [modalShow, setModalShow] = useState(false);
   const [gatePasses, setgatePasses] = useState([]);
   const { allGuests, setAllGuests } = props;
+  console.log(props)
   return (
     <div className=""> 
          <p className="mt-5">What kind of visitor are you expecting?</p>
@@ -63,7 +64,7 @@ export default function CreateVisitor(props) {
           </div>
         </div>
       </div>
-      <CreatePass show={modalShow} onHide={() => setModalShow(false)} />
+      <CreatePass show={modalShow} onHide={() => setModalShow(false)} {...props}/>
 
       <div className="mt-4 d-flex justify-content-between">
         <h5>Incoming Guest</h5> <span>Slide left to Remove</span> 

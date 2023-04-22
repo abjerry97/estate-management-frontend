@@ -183,3 +183,10 @@ cursor: pointer;
   background-color: #A986A7;
   color: #ffffff;
 }
+
+.sidebar-list li a{
+ display : grid;
+ grid-template-columns: 2rem 1fr;
+ align-items: center;
+ font-weight: 600;
+}

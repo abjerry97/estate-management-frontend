@@ -61,6 +61,7 @@ function CreatePass(props) {
           onCancel={showCreationSuccess}
           passInfo={passInfo}
           setpassInfo={setpassInfo}
+          {...props}
         />
       )}
 

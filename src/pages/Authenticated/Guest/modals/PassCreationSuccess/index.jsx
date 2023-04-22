@@ -5,7 +5,7 @@ import PersonIcon from "../../../../../assets/svg/PersonIcon";
 import Dispatch from "../../../../../assets/svg/Dispatch";
 
 function PassCreationSuccess(props) {
-  const {passInfo} = props
+  const {passInfo,allUpdates } = props
   console.log(`passInfo`,passInfo)
   return (
     <>
@@ -21,7 +21,7 @@ function PassCreationSuccess(props) {
           charged N4 for this SMS
         </p>
         <small className="gray-text">Wallet Balance</small>
-        <h1 className="gray-text">N0.00</h1>
+        <h1 className="gray-text">N{allUpdates.walletBalance}</h1>
         <div className=" gray-text text-center success-card-badge rounded-1 p-2">
           Transfer  to <strong>7987438843</strong> Wema Bank Avis Charles to fund your wallet
         </div>
